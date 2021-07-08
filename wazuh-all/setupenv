@@ -1,0 +1,17 @@
+#!/bin/bash
+# this script to create GKE and get credentials
+gcloud services enable containerregistry.googleapis.com
+
+gcloud services enable container.googleapis.com
+
+gcloud services enable dns.googleapis.com
+
+
+gcloud container clusters create security-wazuh \
+--num-nodes "4" \
+--zone "us-east1-c" \
+--node-locations "us-east1-c" \
+--machine-type "n1-standard-2"
+
+gcloud container clusters get-credentials security-wazuh --zone us-east1-c
+

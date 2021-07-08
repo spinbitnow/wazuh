@@ -1,0 +1,8 @@
+#!/bin/bash
+cd wazuh/certs/kibana_http
+sh generate_certs.sh
+cd ../../../
+cd wazuh/certs/odfe_cluster
+sh generate_certs.sh
+cd ../../../
+kubectl apply -k envs/gke

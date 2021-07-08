@@ -1,0 +1,16 @@
+#!/bin/bash
+export WAZUH_SERVER_REG_IP=$(kubectl -n wazuh get services | grep 'wazuh ' | awk '{print $4}')
+
+gcloud dns managed-zones create --dns-name="wazuh-server-reg" --description="Private Zone" --visibility=private --networks=default "private-zone"
+
+gcloud dns record-sets transaction start --zone="private-zone"
+gcloud dns record-sets transaction add $WAZUH_SERVER_REG_IP --name="wazuh-server-reg" --ttl="3600" --type="A" --zone="private-zone"
+gcloud dns record-sets transaction execute --zone="private-zone"
+
+export WAZUH_WORKER_IP=$(kubectl -n wazuh get services | grep 'wazuh-workers' | awk '{print $4}')
+
+gcloud dns record-sets transaction start --zone="private-zone"
+gcloud dns record-sets transaction add $WAZUH_WORKER_IP --name="wazuh-worker.wazuh-server-reg" --ttl="3600" --type="A" --zone="private-zone"
+gcloud dns record-sets transaction execute --zone="private-zone"
+
+
