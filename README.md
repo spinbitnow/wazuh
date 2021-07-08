@@ -21,6 +21,7 @@ check with :
 kubectl get service -n wazuh
 
 cd ..
+
 ./createprivatezone
 
 to create private zone, to make agent able to detect server name, need to wait 5-10 mins
