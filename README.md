@@ -4,6 +4,11 @@
 - how to install Wazuh in GCP ( in GKE )
 - create container with Wazuh client inside and connect to GKE
 # step :
+
+use GCP cloud shell
+
+git clone 
+
 cd wazuh-all
 
 ./setupenv
