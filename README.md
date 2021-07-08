@@ -1,5 +1,5 @@
-# Wazuh
-purpose :
+# Wazuh and GKE
+# what we want to do:
 - learn together about Wazuh
 - how to install Wazuh in GCP ( in GKE )
 - create container with Wazuh client inside and connect to GKE
