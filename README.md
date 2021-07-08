@@ -7,7 +7,7 @@
 
 use GCP cloud shell
 
-git clone 
+git clone https://github.com/spinbitnow/wazuh.git 
 
 cd wazuh-all
 
